@@ -1,0 +1,34 @@
+# !-----------------------------------------------------------------------------------------------!
+#                       Welcome to the main configuration of ${project.name}
+# !-----------------------------------------------------------------------------------------------!
+#
+#   COLOR CODES are supported with the '&' character.
+#     - For usage, see http://minecraftwiki.net/wiki/Formatting_codes
+#     - When you use them, place quotes around the message like this: "Hello &cworld."
+#     - To use HEX colors, use <#123456> syntax: "Hello <#123456>world."
+#
+# !-----------------------------------------------------------------------------------------------!
+
+# -------------------------------------------------------------------------------------------------
+# MiniMessages test message to test the MiniMessages feature
+# -------------------------------------------------------------------------------------------------
+MiniMessageTest: "Hello <rainbow>world</rainbow>, isn't <blue><u><click:open_url:'https://docs.adventure.kyori.net/minimessage'>MiniMessage</click></u></blue> fun?"
+
+# -------------------------------------------------------------------------------------------------
+# The wild border can be used to set a border for the /wild command.
+# This allows you to specify how far people can go with the /wild command.
+# -------------------------------------------------------------------------------------------------
+WildBorder: 150
+
+# -------------------------------------------------------------------------------------------------
+# The prefix used in front of most chat or console messages. You can manually use it with
+# {plugin_prefix} variable anywhere.
+# -------------------------------------------------------------------------------------------------
+Prefix: "&8[&c${project.name}&8]&7 "
+
+# -------------------------------------------------------------------------------------------------
+# List of section names that will print informative messages about their features.
+# The Debugger class utilizes this key and will only print messages for sections enabled below.
+# Available debug options [MySQL, UltraRegions]
+# -------------------------------------------------------------------------------------------------
+Debug: [ ]

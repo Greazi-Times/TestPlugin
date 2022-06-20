@@ -1,0 +1,44 @@
+name: GreaziCore
+version: '${project.version}'
+main: com.greazi.plugin.PluginCore
+api-version: 1.13
+softdepend:
+  - Vault
+  - ProtocolLib
+  - PlaceholderAPI
+authors: [ Greazi ]
+description: A small plugin to test some things out
+website: greazi.com
+
+commands:
+  greazicore:
+    description: GreaziCore main command
+    aliases:
+      - core
+      - gc
+    permission: greazi.command
+
+  hologram:
+    description: Spawn a hologram at your location
+    permission: greazi.command.hologram
+
+  wild:
+    description: Teleport to a random location
+    aliases:
+      - rtp
+      - randomtp
+    permission: greazi.command.wild
+
+  sandbox:
+    description: Open the sandbox menu
+    aliases:
+      - menu
+    permission: greazi.ccommand.sandbox
+
+  spawnentity:
+    description: Spawn a mob at the given location.
+    aliases:
+      - spawnmob
+      - spawnanimal
+      - spawne
+    permission: greazi.command.spawnentity

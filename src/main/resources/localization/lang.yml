@@ -1,0 +1,54 @@
+# !-----------------------------------------------------------------------------------------------!
+#                      Welcome to the localization file of ${project.name}
+# !-----------------------------------------------------------------------------------------------!
+#
+#   COLOR CODES are supported with the '&' character.
+#     - For usage, see http://minecraftwiki.net/wiki/Formatting_codes
+#     - When you use them, place quotes around the message like this: "Hello &cworld."
+#     - To use HEX colors, use <#123456> syntax: "Hello <#123456>world."
+#
+# !-----------------------------------------------------------------------------------------------!
+
+# -------------------------------------------------------------------------------------------------
+# Hologram messages
+# -------------------------------------------------------------------------------------------------
+Hologram:
+  Success: "<green><bold>Spawned a hologram!"
+  Failed: "<red><bold>Failed to spawn a hologram!"
+
+# -------------------------------------------------------------------------------------------------
+# NameTag related messages
+# -------------------------------------------------------------------------------------------------
+NameTag:
+  Enabled: "&aName tags are enabled"
+  Disabled: "&cName tags are disabled"
+  Sub:
+    Enabled: "&aBelow name Tags are enabled"
+    Disabled: "&cBelow name Tags are disabled"
+
+# -------------------------------------------------------------------------------------------------
+# Wild command related messages
+# -------------------------------------------------------------------------------------------------
+Wild:
+  Self:
+    Success: "&aYou have successfully teleported to a random location"
+    Fail: "&cFailed to teleport you to a random location"
+  Other:
+    Success:
+      Self: "&aYou have successfully teleported {Player} to a random location"
+      Target: "&aYou have been teleported to a random location by {Player}"
+    Fail: "&cFailed to teleport {Player} to a random location"
+
+
+# -------------------------------------------------------------------------------------------------
+# Commands
+# -------------------------------------------------------------------------------------------------
+Commands:
+  NoConsole: "&cYou can't use this command in console"
+  ConsoleMissingPlayer: "When running from console, specify player name."
+  Reloading: "Reloading the plugin..."
+
+# -------------------------------------------------------------------------------------------------
+# Messages shown when player runs a command he lacks permission for
+# -------------------------------------------------------------------------------------------------
+NoPermission: "&cNo permission to perform this action. {Permission}"
