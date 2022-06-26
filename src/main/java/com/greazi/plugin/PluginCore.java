@@ -9,6 +9,7 @@ import lombok.Getter;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -112,13 +113,17 @@ public final class PluginCore extends JavaPlugin {
 		source = instance.getFile();
 		data = instance.getDataFolder();
 
+		// Load the settings and language system
 		SimpleSettings.load();
 		Lang.load();
 
+		// Show loading message and plugin version
 		Common.log("Loading " + named + " v" + version);
 
+		// Get the bukkit version
 		final String version = Bukkit.getVersion();
 
+		// Check if it is a supported fork if not give a warning
 		if (!version.contains("Paper")
 				&& !version.contains("Purpur")
 				&& !version.contains("-Spigot")) {
@@ -141,8 +146,23 @@ public final class PluginCore extends JavaPlugin {
 		// Plugin startup logic
 		Common.log("Enabling " + named + " v" + version);
 
+		final PluginManager pluginManager = Bukkit.getPluginManager();
+
 		// Run the setup parts
-		setupVault();
+		if (!pluginManager.isPluginEnabled("Vault")) {
+			Common.warn(Common.consoleLine());
+			Common.warn("Warning about " + named + ": Vault isn't loaded!");
+			Common.warn("Detected: " + version);
+			Common.warn("");
+			Common.warn("Either Vault isn't installed or loaded there for");
+			Common.warn("vault compatibility has been disabled.");
+			Common.warn("Feature that require vault will not work!");
+			Common.warn(Common.consoleLine());
+		} else {
+			// Setup Vault
+			setupVault();
+		}
+
 		loadCommands();
 		loadEvents();
 

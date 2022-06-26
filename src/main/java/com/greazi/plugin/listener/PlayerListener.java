@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -65,11 +64,15 @@ public class PlayerListener implements Listener {
 			player.setScoreboard(HealthTag.getHealthBoard());
 		}
 
-		// Get the vault chat manager
-		final Chat chat = PluginCore.getInstance().chat;
+		if (Bukkit.getPluginManager().isPluginEnabled("Vault")) {
+			// Get the vault chat manager
+			final Chat chat = PluginCore.getInstance().chat;
 
-		// Set the player's display name to the player's name
-		NameTag.setTag(player, chat.getGroupPrefix("world", chat.getPrimaryGroup(player) + " "), chat.getGroupSuffix("world", " " + chat.getPrimaryGroup(player)), NameTag.Action.CREATE);
+			// Set the player's display name to the player's name
+			NameTag.setTag(player, chat.getGroupPrefix("world", chat.getPrimaryGroup(player) + " "), chat.getGroupSuffix("world", " " + chat.getPrimaryGroup(player)), NameTag.Action.CREATE);
+		} else {
+			Common.warn("Vault isn't enabled!");
+		}
 	}
 
 	/**
@@ -192,17 +195,24 @@ public class PlayerListener implements Listener {
 					// Return true to stop the command from running
 				}
 
+				// Check if vault is installed before doing anything else
+				if (!Bukkit.getPluginManager().isPluginEnabled("Vault")) {
+					Common.warn("Vault isn't enabled! NameTag support has been disabled!");
+					Common.tell(player, "&cSomething is wrong please check console for more details!");
+					return;
+				}
+
 				final Chat chat = PluginCore.getInstance().chat;
 
 				if (!PluginCore.getInstance().nameTagEnabled) {
-					for (final OfflinePlayer p : Bukkit.getOfflinePlayers()) {
-						NameTag.setTag(p.getPlayer(), chat.getGroupPrefix("world", chat.getPrimaryGroup(p.getPlayer())), chat.getGroupSuffix("world", chat.getPrimaryGroup(p.getPlayer())), NameTag.Action.CREATE);
+					for (final Player p : Bukkit.getOnlinePlayers()) {
+						NameTag.setTag(p, chat.getGroupPrefix("world", chat.getPrimaryGroup(p.getPlayer())) + " ", chat.getGroupSuffix("world", chat.getPrimaryGroup(p.getPlayer())) + " ", NameTag.Action.CREATE);
 					}
 					Common.tell(player, Lang.NameTag.ENABLED);
 					PluginCore.getInstance().nameTagEnabled = true;
 				} else {
-					for (final OfflinePlayer p : Bukkit.getOfflinePlayers()) {
-						NameTag.setTag(p.getPlayer(), "", "", NameTag.Action.DESTROY);
+					for (final Player p : Bukkit.getOnlinePlayers()) {
+						NameTag.setTag(p, "", "", NameTag.Action.DESTROY);
 					}
 					Common.tell(player, Lang.NameTag.DISABLED);
 					PluginCore.getInstance().nameTagEnabled = false;

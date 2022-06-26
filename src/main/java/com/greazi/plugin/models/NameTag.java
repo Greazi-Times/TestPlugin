@@ -22,6 +22,10 @@ public class NameTag {
 	 * @param action The action of the name tag
 	 */
 	public static void setTag(final Player player, final String prefix, final String suffix, final Action action) {
+		if (player == null) {
+			return;
+		}
+
 		// Check if the scoreboard is already created
 		if (player.getScoreboard() == null || prefix == null || suffix == null || action == null) {
 			return;
