@@ -6,7 +6,7 @@
 
     <groupId>com.greazi</groupId>
     <artifactId>plugin</artifactId>
-    <version>1.0.0-BETA</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>GreaziCore</name>
@@ -86,11 +86,11 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
+        <!-- dependency>
             <groupId>com.comphenix.protocol</groupId>
             <artifactId>ProtocolLib</artifactId>
             <version>4.7.0</version>
-        </dependency>
+        </dependency -->
     </dependencies>
 
     <build>
